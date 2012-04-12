@@ -1,0 +1,18 @@
+RECIPE
+Chili Dogs
+INGREDIENTS
+1
+c
+chili
+1
+u
+hot dog
+1
+u
+bun
+DIRECTIONS
+Heat hot dog.
+Heat chili.
+Put hot dog on bun.
+Put chili on hot dog.
+
