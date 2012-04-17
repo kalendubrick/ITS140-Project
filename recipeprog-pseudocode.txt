@@ -1,0 +1,71 @@
+start
+	Declarations
+	// constants
+	num MENU_QUIT = 3
+	RECIPE_DATA_FILE = "recipes.txt"
+	// other variables
+	InputFile recipeFile
+	num menuChoice = -1
+
+	// try to open the recipe file
+	getRecipeFile()
+
+	// get the user's menu choice if not already set to MENU_QUIT by errors opening a file
+
+	if menuChoice <> MENU_QUIT
+		menuChoice = displayMenu()
+	endif
+
+	while menuChoice <> MENU_QUIT
+	endwhile
+stop
+
+void getRecipeFile()
+	// commandLineArguments is not a declared variable; it represents the # of commandline arguments 
+	// passed when running the program
+	if commandLineArguments == 0
+		// no file was passed via commandline, so we will 
+		// try to open a file in the current directory.
+		try
+			open recipeFile RECIPE_DATA_FILE
+		catch error
+			output "No files passed and ", RECIPE_DATA_FILE, " does not exist"
+			menuChoice = 3
+		endtry
+	else
+		if commandLineArguments == 1
+			// a file was passed, so we will try to open it
+			try
+				open recipeFile from commandPrompt
+			catch error
+				// there was a problem with the filename passed,
+				// so we will try to open a file in the current directory
+				try
+					open recipeFile RECIPE_DATA_FILE
+				catch error
+					// there is nothing we can use
+					output "There was a problem with the file passed and ", RECIPE_DATA_FILE, " does not exist"
+					menuChoice = 3
+				endtry
+			endtry
+		else
+			// more than one file was passed - we will let the user
+			// know and try to open the first one
+			output "You passed too many files.  Only the first will be used."
+			try
+				open recipeFile from commandPrompt
+			catch error
+				// there was a problem with the filename passed,
+				// so we will try to open a file in the current directory
+				try
+					open recipeFile RECIPE_DATA_FILE
+				catch error
+					// there is nothing we can use
+					output "There was a problem with the file passed and ", RECIPE_DATA_FILE, " does not exist"
+					menuChoice = 3
+				endtry
+			endtry
+		endif
+	endif
+return
+			
