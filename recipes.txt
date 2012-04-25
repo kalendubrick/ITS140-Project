@@ -1,4 +1,3 @@
-RECIPE
 Chili Dogs
 INGREDIENTS
 1
@@ -15,4 +14,17 @@ Heat hot dog.
 Heat chili.
 Put hot dog on bun.
 Put chili on hot dog.
-
+RECIPE
+Salad
+INGREDIENTS
+1
+c
+lettuce
+1
+T
+cheese
+1
+T
+ranch
+DIRECTIONS
+Mix ingredients.
